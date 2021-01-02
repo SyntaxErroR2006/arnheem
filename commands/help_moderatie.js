@@ -14,7 +14,6 @@ module.exports.run = async (client, message, args) => {
     .setDescription("Prefix: `!`")
     .setColor("#2075d6")
     .addField('Commands:', [
-        `**-> Server Name:** ${message.guild.name}`,
         `**-> training:** Hiermee kan u een training maken. `,
         `**-> warn:** Hiermee kan u warnen. `,
     ])

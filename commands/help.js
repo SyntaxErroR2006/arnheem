@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async(client, message, args) => {
 
-    if(message.author.id != ["263034920635465729"]) return message.channel.send("U bent niet bevoegd deze command uit te voeren!")
+    // if(message.author.id != ["263034920635465729"]) return message.channel.send("U bent niet bevoegd deze command uit te voeren!")
 
     var embed = new discord.MessageEmbed()
     .setTitle("Help Systeem Arnhem")
