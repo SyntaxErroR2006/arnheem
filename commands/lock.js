@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const botConfig = require("../botconfig.json");
 
 module.exports.run = async (client, message, args, lock) => {
-    if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(":x: U kunt dit niet doen.");
+    if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: U kunt dit niet doen.");
 
     message.delete()
     message.channel.createOverwrite(message.guild.id, {

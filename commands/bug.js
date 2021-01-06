@@ -34,11 +34,7 @@ module.exports.run = async (client, message, args) => {
     var bugKanaal = message.guild.channels.cache.find(ch => ch.name === "bugs");
     if (!bugKanaal) return message.guild.send("Kan het kanaal niet vinden");
 
-    bugKanaal.send(embed).then(embedMessage => {
-        embedMessage.react('✅');
-        embedMessage.react('❌');
-    });
-
+    
 }
 
 module.exports.help = {

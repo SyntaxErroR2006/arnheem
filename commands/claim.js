@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     if (!modRoles) return message.reply(embed);
 
     var embed = new discord.MessageEmbed()
-        .setDescription(`Goededag, \n\n U word geholpen door ${message.author.username} van het staff-team. Wat kunnen wij voor u betekenen? \n\n U heeft 2 uur de tijd om te reageren.`)
+        .setDescription(`U wordt geholpen door: ${message.author.tag}`)
     message.channel.send(embed);
 }
 

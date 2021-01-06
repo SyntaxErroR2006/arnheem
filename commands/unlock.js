@@ -3,7 +3,7 @@ const botConfig = require("../botconfig.json");
 
 module.exports.run = async (client, message, args) => {
     message.delete()
-    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply("Je hebt geen permissie voor deze command!");
+    if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply("Je hebt geen permissie voor deze command!");
 
     message.channel.createOverwrite(message.guild.id, {
         SEND_MESSAGES: true
