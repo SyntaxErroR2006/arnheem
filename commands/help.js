@@ -2,6 +2,14 @@ const discord = require("discord.js");
 
 module.exports.run = async(client, message, args) => {
 
+    var embed = new discord.MessageEmbed()
+    .setDescription("<:gn_nee:797184283600486461> U bent niet in het juiste kanaal!")
+
+
+    var bugKanaal = message.guild.channels.cache.find(ch => ch.name === "commands", "staff-cmds");
+
+    if(!bugKanaal) return message.channel.send()
+
     // if(message.author.id != ["263034920635465729"]) return message.channel.send("U bent niet bevoegd deze command uit te voeren!")
 
     var embed = new discord.MessageEmbed()
