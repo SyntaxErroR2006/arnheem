@@ -5,8 +5,7 @@ module.exports.run = async(client, message, args) => {
     var embed = new discord.MessageEmbed()
     .setDescription("<:gn_nee:797184283600486461> U bent niet in het juiste kanaal!")
 
-
-    var bugKanaal = message.guild.channels.cache.find(ch => ch.name === "commands", "staff-cmds");
+    var bugKanaal = message.guild.channels.cache.find(ch => ch.name === "commands");
 
     if(!bugKanaal) return message.channel.send()
 
