@@ -40,7 +40,7 @@ client.login(process.env.token);
 client.on("ready", async () => {
 
     console.log(`${client.user.username} is online.`);
-    let activities = ["!help", "Arnhem Bot", "Prefix !", ]
+    let activities = ["!help", "Arnhem Bot", "Prefix !", `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}` ]
     i = 0;
     setInterval(() => {
         client.user.setPresence({

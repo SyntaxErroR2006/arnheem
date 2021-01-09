@@ -7,7 +7,7 @@ module.exports.run = async(client, message, args) => {
 
     var bugKanaal = message.guild.channels.cache.find(ch => ch.name === "commands");
 
-    if(!bugKanaal) return message.channel.send()
+    if(!bugKanaal) return message.channel.send(embed)
 
     // if(message.author.id != ["263034920635465729"]) return message.channel.send("U bent niet bevoegd deze command uit te voeren!")
 
