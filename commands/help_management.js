@@ -2,12 +2,8 @@ const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
     
-    var modRoles = message.member.roles.cache.has('724565278016536648', '796158091880038460', '739236783694413836');
+    if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply(":x: U kunt dit niet doen!");
 
-    var embed = new discord.MessageEmbed()
-        .setDescription("Deze command is alleen voor **Management+** mogelijk.");
-
-    if (!modRoles) return message.reply(embed);
 
     var embed = new discord.MessageEmbed()
     .setTitle("Management Commands")

@@ -15,6 +15,7 @@ module.exports.run = async (client, message, args) => {
         `**-> serverinfo:** Hiermee kan u info zien van deze server. `,
         `**-> botinfo:** Hiermee kan u info zien over de bot. `,
         `**-> ping:** Hiermee kan u de ping zien van de bot. `,
+        `**-> info:** Hiermee kan u info zien. `,
     ])
 
     return message.channel.send(embed);
