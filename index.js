@@ -42,36 +42,6 @@ fs.readdir("./commands/", (err, files) => {
 
 });
 
-
-if(message.member.roles.cache.has('724553018552615002')){
-    if(message.content.includes(".com")){
-        message.channel.messages.fetch({limit: 1}).then(messages =>{
-            message.channel.bulkDelete(messages)
-        })
-        message.channel.send(message.author.toString() + " geen puntjes!")
-    }
-}
-
-if(message.member.roles.cache.has('724553018552615002')){
-    if(message.content.includes("www.")){
-        message.channel.messages.fetch({limit: 1}).then(messages =>{
-            message.channel.bulkDelete(messages)
-        })
-        message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
-    }
-}
-
-if(message.member.roles.cache.has('724553018552615002')){
-    if(message.content.includes("https://")){
-        message.channel.messages.fetch({limit: 1}).then(messages =>{
-            message.channel.bulkDelete(messages)
-        })
-        message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
-    }
-}
-
-
-
 client.login(process.env.token);
 
 
@@ -142,6 +112,35 @@ client.on("message", async message => {
             console.log('Removed from map.');
         }, 5000);
     }
+
+
+    if(message.member.roles.cache.has('724553018552615002')){
+        if(message.content.includes(".com")){
+            message.channel.messages.fetch({limit: 1}).then(messages =>{
+                message.channel.bulkDelete(messages)
+            })
+            message.channel.send(message.author.toString() + " geen puntjes!")
+        }
+    }
+    
+    if(message.member.roles.cache.has('724553018552615002')){
+        if(message.content.includes("www.")){
+            message.channel.messages.fetch({limit: 1}).then(messages =>{
+                message.channel.bulkDelete(messages)
+            })
+            message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
+        }
+    }
+    
+    if(message.member.roles.cache.has('724553018552615002')){
+        if(message.content.includes("https://")){
+            message.channel.messages.fetch({limit: 1}).then(messages =>{
+                message.channel.bulkDelete(messages)
+            })
+            message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
+        }
+    }
+
 });
 
 // -WELKOM COMMAND-
