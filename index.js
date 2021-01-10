@@ -93,7 +93,7 @@ client.on("message", async message => {
         let msgCount = userData.msgCount;
         ++msgCount;
         if (parseInt(msgCount) === 5 ) {
-            const role = message.guild.roles.cache.get('')
+            const role = message.guild.roles.cache.get('724564906015195207')
             message.member.roles.add(role);
             message.channel.send('Je bent gemuted. Omdat je te veel berichten hebt verstuurd!')
         } else {
