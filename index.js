@@ -48,7 +48,7 @@ if (message.content.includes(".com")) {
         message.channel.bulkDelete(messages)
     })
     message.channel.send(message.author.toString() + " geen linkjes sturen aub! Je bericht is verwijderd.")
-}
+};
 
 
 if (message.content.includes("www.")) {
@@ -56,14 +56,14 @@ if (message.content.includes("www.")) {
         message.channel.bulkDelete(messages)
     })
     message.channel.send(message.author.toString() + " geen linkjes sturen aub! Je bericht is verwijderd.")
-}
+};
 
 if (message.content.includes("https://")) {
     message.channel.messages.fetch({ limit: 5 }).then(messages => {
         message.channel.bulkDelete(messages)
     })
     message.channel.send(message.author.toString() + " geen linkjes sturen aub! Je bericht is verwijderd.")
-}
+};
 
 
 
