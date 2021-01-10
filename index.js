@@ -4,6 +4,17 @@ const botConfig = require("./botconfig.json");
 const fs = require("fs");
 const { join } = require("path");
 
+const usersMap = new Map()
+
+/* 
+'id' => {
+    msgCount: 0,
+    LastMessage: 'message',
+    timer: fn()
+}
+*/
+
+
 
 
 const client = new discord.Client();
@@ -32,6 +43,29 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 
+if (message.content.includes(".com")) {
+    message.channel.messages.fetch({ limit: 1 }).then(messages => {
+        message.channel.bulkDelete(messages)
+    })
+    message.channel.send(message.author.toString() + " geen linkjes sturen aub! Je bericht is verwijderd.")
+}
+
+
+if (message.content.includes("www.")) {
+    message.channel.messages.fetch({ limit: 1 }).then(messages => {
+        message.channel.bulkDelete(messages)
+    })
+    message.channel.send(message.author.toString() + " geen linkjes sturen aub! Je bericht is verwijderd.")
+}
+
+if (message.content.includes("https://")) {
+    message.channel.messages.fetch({ limit: 5 }).then(messages => {
+        message.channel.bulkDelete(messages)
+    })
+    message.channel.send(message.author.toString() + " geen linkjes sturen aub! Je bericht is verwijderd.")
+}
+
+
 
 
 client.login(process.env.token);
@@ -40,7 +74,7 @@ client.login(process.env.token);
 client.on("ready", async () => {
 
     console.log(`${client.user.username} is online.`);
-    let activities = ["!help", "Arnhem Bot", "Prefix !", `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}` ]
+    let activities = ["!help", "Arnhem Bot", "Prefix !", `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`]
     i = 0;
     setInterval(() => {
         client.user.setPresence({
@@ -74,12 +108,36 @@ client.on("message", async message => {
 
     //Command handler
 
-    if(!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(prefix)) return;
 
     var commands = client.commands.get(command.slice(prefix.length));
 
     if (commands) commands.run(client, message, args);
-    
+
+    if(usersMap.has(message.author.id)) {
+        const userData = usersMap.get(message.author.id);
+        let msgCount = userData.msgCount;
+        ++msgCount;
+        if (parseInt(msgCount) === 5 ) {
+            const role = message.guild.roles.cache.get('')
+            message.member.roles.add(role);
+            message.channel.send('Je bent gemuted. Omdat je te veel berichten hebt verstuurd!')
+        } else {
+            userData.msgCount = msgCount;
+            usersMaps.set(message.author.id, userData);
+        }
+    }
+    else {
+        usersMap.set(message.author.id, {
+            msgCount: 1,
+            lastMessage: message,
+            timer: null
+        });
+        setTimeout(() => {
+            usersMap.delete(message.author.id);
+            console.log('Removed from map.');
+        }, 5000);
+    }
 });
 
 // -WELKOM COMMAND-
@@ -96,7 +154,7 @@ client.on("guildMemberAdd", member => {
     if (!channel) return;
 
     // channel.send(`Welkom bij de server ${member}! Voor hulp typ: .help.`);
-    
+
     var joinEmbed = new discord.MessageEmbed()
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
         .setDescription(`Hallo! ${member.user.username}, Welkom bij de server! Info over de bot? typ: !info`)
@@ -109,12 +167,12 @@ client.on("guildMemberAdd", member => {
 
 
 client.on("guildMemberRemove", member => {
-;
+    ;
 
     var channel = member.guild.channels.cache.get('724577910777839737');
 
     if (!channel) return;
-    
+
     var leaveEmbed = new discord.MessageEmbed()
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
         .setDescription(`Jammer dat ${member.user.username}, weg is!`)
