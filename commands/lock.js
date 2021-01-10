@@ -6,7 +6,14 @@ module.exports.run = async (client, message, args, lock) => {
 
     message.delete()
     message.channel.createOverwrite(message.guild.id, {
-        SEND_MESSAGES: false
+        CREATE_INSTANT_INVITE: false,
+        READ_MESSAGES: true,
+        SEND_MESSAGES: false,
+        ATTACH_FILES: false,
+        CONNECT: false,
+        ADD_REACTIONS: false,
+        VIEW_CHANNEL: true,
+        READ_MESSAGE_HISTORY: true
     })
 
     var botEmbed = new discord.MessageEmbed()

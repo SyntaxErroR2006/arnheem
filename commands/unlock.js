@@ -6,7 +6,10 @@ module.exports.run = async (client, message, args) => {
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply("Je hebt geen permissie voor deze command!");
 
     message.channel.createOverwrite(message.guild.id, {
-        SEND_MESSAGES: true
+        SEND_MESSAGES: true,
+        READ_MESSAGES: true,
+        VIEW_CHANNEL: true
+        
     })
 
     var botEmbed = new discord.MessageEmbed()

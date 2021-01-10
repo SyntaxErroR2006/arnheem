@@ -48,7 +48,7 @@ client.login(process.env.token);
 client.on("ready", async () => {
 
     console.log(`${client.user.username} is online.`);
-    let activities = ["!help", "Arnhem Bot", "Prefix !", `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`]
+    let activities = ["!help", "Arnhem Bot", "Prefix !", `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} members`]
     i = 0;
     setInterval(() => {
         client.user.setPresence({
@@ -56,8 +56,7 @@ client.on("ready", async () => {
                 name: activities[i++ % activities.length],
                 type: "LISTENING",
                 type: "PLAYING",
-                type: "WATCHING",
-                type: "PLAYING"
+                type: "WATCHING"
             }
         })
     }, 5000);
