@@ -114,7 +114,7 @@ client.on("message", async message => {
     }
 
 
-    if(message.member.roles.cache.has('724553018552615002')){
+    if(guild.roles.cache.find(role => role.name === 'Speler')){
         if(message.content.includes(".com")){
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
@@ -123,7 +123,7 @@ client.on("message", async message => {
         }
     }
     
-    if(message.member.roles.cache.has('724553018552615002')){
+    if(guild.roles.cache.find(role => role.name === 'Speler')){
         if(message.content.includes("www.")){
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
@@ -132,7 +132,7 @@ client.on("message", async message => {
         }
     }
     
-    if(message.member.roles.cache.has('724553018552615002')){
+    if(guild.roles.cache.find(role => role.name === 'Speler')){
         if(message.content.includes("https://")){
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
