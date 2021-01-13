@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async(client, message, args) => {
 
-    var cmds = (message.member.guild.channels.cache.get("724578026242703390", "724582536432582758"));
+    var cmds = (message.member.guild.channels.cache.get("724578026242703390"));
 
     if(!cmds) return message.reply("U zit niet in het juiste kanaal.")
 
