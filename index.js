@@ -87,33 +87,8 @@ client.on("message", async message => {
 
     if (commands) commands.run(client, message, args);
 
-    if(usersMap.has(message.author.id)) {
-        const userData = usersMap.get(message.author.id);
-        let msgCount = userData.msgCount;
-        ++msgCount;
-        if (parseInt(msgCount) === 5 ) {
-            const role = message.guild.roles.cache.get('724564906015195207')
-            message.member.roles.add(role);
-            message.channel.send('Je bent gemuted. Omdat je te veel berichten hebt verstuurd!')
-        } else {
-            userData.msgCount = msgCount;
-            usersMaps.set(message.author.id, userData);
-        }
-    }
-    else {
-        usersMap.set(message.author.id, {
-            msgCount: 1,
-            lastMessage: message,
-            timer: null
-        });
-        setTimeout(() => {
-            usersMap.delete(message.author.id);
-            console.log('Removed from map.');
-        }, 5000);
-    }
 
-
-    if(guild.roles.cache.find(role => role.name === 'Speler')){
+    if(message.member.roles.cache.has('724553018552615002')){
         if(message.content.includes(".com")){
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
@@ -122,7 +97,7 @@ client.on("message", async message => {
         }
     }
     
-    if(guild.roles.cache.find(role => role.name === 'Speler')){
+    if(message.member.roles.cache.has('724553018552615002')){
         if(message.content.includes("www.")){
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
@@ -131,14 +106,6 @@ client.on("message", async message => {
         }
     }
     
-    if(guild.roles.cache.find(role => role.name === 'Speler')){
-        if(message.content.includes("https://")){
-            message.channel.messages.fetch({limit: 1}).then(messages =>{
-                message.channel.bulkDelete(messages)
-            })
-            message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
-        }
-    }
 
 });
 
@@ -159,10 +126,8 @@ client.on("guildMemberAdd", member => {
 
     var joinEmbed = new discord.MessageEmbed()
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
-        .setDescription(`Hallo! ${member.user.username}, Welkom bij de server! Info over de bot? typ: !info`)
+        .setDescription(`Hallo! ${member.user.username}, Welkom bij de server!`)
         .setColor("#30db00")
-        .setFooter("Gebruiker gejoined op:")
-        .setTimestamp();
     channel.send(joinEmbed);
 });
 
@@ -179,7 +144,5 @@ client.on("guildMemberRemove", member => {
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
         .setDescription(`Jammer dat ${member.user.username}, weg is!`)
         .setColor("#fc0d00")
-        .setFooter("Gebruiker geleaved op:")
-        .setTimestamp();
     channel.send(leaveEmbed);
 })
