@@ -88,7 +88,7 @@ client.on("message", async message => {
     if (commands) commands.run(client, message, args);
 
 
-    if(message.member.roles.cache.has('724553018552615002')){
+    if(role){
         if(message.content.includes(".com")){
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
@@ -97,14 +97,16 @@ client.on("message", async message => {
         }
     }
     
-    if(message.member.roles.cache.has('724553018552615002')){
+    if(role){
         if(message.content.includes("www.")){
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
             })
             message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
         }
-    }
+    };
+
+    var role = message.member.roles.cache.has('724553018552615002');
     
 
 });
