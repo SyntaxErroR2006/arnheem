@@ -3,6 +3,7 @@ const botConfig = require("./botconfig.json");
 
 const fs = require("fs");
 const { join } = require("path");
+const { connect } = require("http2");
 
 const usersMap = new Map()
 
@@ -96,6 +97,11 @@ client.on("message", async message => {
             message.channel.send(message.author.toString() + " geen linkjes!")
         }
     };
+
+    if(content.includes('discord.gg/')){
+        message.delete()
+        message.channel.send('Geen linkjes sturen. Je bericht is verwijderd.')
+    }
     
     if(message.member.roles.cache.has(role)){
         if(message.content.includes("www.")){
