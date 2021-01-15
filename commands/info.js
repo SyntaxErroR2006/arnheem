@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
 
         var botEmbed = new discord.MessageEmbed()
 			.setTitle("Arnhem Informatie")
-			.addField("Versie", "`V1.0.0`")
+			.addField("Versie", "`V1.0.1`")
             .addField("Eigenaar", `${message.guild.name}`)
 			.addField("Gebruikers", `${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`)
 			.setColor("#2075d6")
