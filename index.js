@@ -88,16 +88,16 @@ client.on("message", async message => {
     if (commands) commands.run(client, message, args);
 
 
-    if(role){
+    if(message.member.roles.cache.has(role)){
         if(message.content.includes(".com")){
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
             })
             message.channel.send(message.author.toString() + " geen linkjes!")
         }
-    }
+    };
     
-    if(role){
+    if(message.member.roles.cache.has(role)){
         if(message.content.includes("www.")){
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
