@@ -104,6 +104,13 @@ client.on("message", async message => {
         message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
     }
 
+    if (message.content.includes("discord.gg/")) {
+        message.channel.messages.fetch({ limit: 1 }).then(messages => {
+            message.channel.bulkDelete(messages)
+        })
+        message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
+    }
+
 
     var role = message.member.roles.cache.has('724553018552615002');
 
