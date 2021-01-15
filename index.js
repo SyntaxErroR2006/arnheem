@@ -89,31 +89,24 @@ client.on("message", async message => {
     if (commands) commands.run(client, message, args);
 
 
-    if(message.member.roles.cache.has(role)){
-        if(message.content.includes(".com")){
-            message.channel.messages.fetch({limit: 1}).then(messages =>{
-                message.channel.bulkDelete(messages)
-            })
-            message.channel.send(message.author.toString() + " geen linkjes!")
-        }
-    };
-
-    if(content.includes('discord.gg/')){
-        message.delete()
-        message.channel.send('Geen linkjes sturen. Je bericht is verwijderd.')
+    if (message.content.includes(".com")) {
+        message.channel.messages.fetch({ limit: 1 }).then(messages => {
+            message.channel.bulkDelete(messages)
+        })
+        message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
     }
-    
-    if(message.member.roles.cache.has(role)){
-        if(message.content.includes("www.")){
-            message.channel.messages.fetch({limit: 1}).then(messages =>{
-                message.channel.bulkDelete(messages)
-            })
-            message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
-        }
-    };
+
+
+    if (message.content.includes("www.")) {
+        message.channel.messages.fetch({ limit: 1 }).then(messages => {
+            message.channel.bulkDelete(messages)
+        })
+        message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
+    }
+
 
     var role = message.member.roles.cache.has('724553018552615002');
-    
+
 
 });
 
@@ -152,5 +145,5 @@ client.on("guildMemberRemove", member => {
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
         .setDescription(`Jammer dat ${member.user.username}, weg is!`)
         .setColor("#fc0d00")
-    channel.send(leaveEmbed);   
+    channel.send(leaveEmbed);
 })
