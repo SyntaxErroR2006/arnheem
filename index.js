@@ -90,7 +90,7 @@ client.on("message", async message => {
 
 
     if (content.includes(".com")) {
-        message.channel.messages.fetch({ limit: 1 }).then(messages => {
+        message.channel.messages.fetch().then(messages => {
             message.channel.bulkDelete(messages)
         })
         message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
@@ -98,14 +98,14 @@ client.on("message", async message => {
 
 
     if (content.includes("www.")) {
-        message.channel.messages.fetch({ limit: 1 }).then(messages => {
+        message.channel.messages.fetch().then(messages => {
             message.channel.bulkDelete(messages)
         })
         message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
     }
 
     if (content.includes("discord.gg/")) {
-        message.channel.messages.fetch({ limit: 1 }).then(messages => {
+        message.channel.messages.fetch().then(messages => {
             message.channel.bulkDelete(messages)
         })
         message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
