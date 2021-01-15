@@ -88,6 +88,22 @@ client.on("message", async message => {
 
     if (commands) commands.run(client, message, args);
 
+    if(args[0] == 'e'){
+        try{
+            client.user.setPresence({
+                activity: {
+                    name: 'PRESENCE',
+                    //type: "LISTENING",
+                    type: 'TYPE'
+                    //type: "WATCHING",
+                    //type: "STREAMING"
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }  
+    }
+
 
     if (content.includes(".com")) {
         message.channel.messages.fetch().then(messages => {
