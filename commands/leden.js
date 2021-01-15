@@ -2,6 +2,8 @@ const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
+    message.delete();
+
     var ledenTotal = message.guild.memberCount;
     var bots = message.guild.members.cache.filter(m => m.user.bot).size;
     var people = ledenTotal - bots;

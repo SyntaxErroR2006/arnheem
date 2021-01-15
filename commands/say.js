@@ -2,6 +2,8 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
+    message.delete();
+
     //!zeg title | bericht | kleur | kanaal
 
     if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: Sorry jij kan dit niet gebruiken.");

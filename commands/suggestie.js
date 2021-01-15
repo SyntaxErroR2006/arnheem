@@ -2,6 +2,8 @@ const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
+    message.delete();
+
     //message.delete();
 
     if (args[1] == null) {

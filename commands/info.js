@@ -2,6 +2,8 @@ const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
+	message.delete();
+
         var botEmbed = new discord.MessageEmbed()
 			.setTitle("Arnhem Informatie")
 			.addField("Versie", "`V1.0.0`")

@@ -2,6 +2,8 @@ const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
+    message.delete();
+
     var embed = new discord.MessageEmbed()
         .setTitle("Partnerschap aanvragen")
         .setColor("#2075d6")

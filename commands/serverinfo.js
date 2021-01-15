@@ -3,6 +3,8 @@ const moment = require("moment");
 
 module.exports.run = async (client, message, args) => {
 
+    message.delete();
+
     var roles = message.guild.roles.cache.size - 1;
 
     var embed = new discord.MessageEmbed()

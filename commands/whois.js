@@ -3,6 +3,8 @@ const moment = require("moment");
 
 module.exports.run = async (client, message, args) => {
 
+    message.delete();
+
     var member = message.guild.member(message.mentions.users.first() || client.users.cache.get(args[0]));
     if (!member) member = message.member;
 

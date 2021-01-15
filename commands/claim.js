@@ -2,7 +2,9 @@ const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
-    message.delete()
+    message.delete();
+
+    const categoryID = "728563729599430656";
 
     var modRoles = message.member.roles.cache.has('724566724220944484');
 
@@ -11,11 +13,19 @@ module.exports.run = async (client, message, args) => {
 
     if (!modRoles) return message.reply(embed);
 
-    var embed = new discord.MessageEmbed()
-        .setDescription(`U wordt geholpen door: ${message.author.tag}`)
-    message.channel.send(embed);
+
+    if (message.channel.parentID == categoryID) {
+        var embed = new discord.MessageEmbed()
+            .setDescription(`U wordt geholpen door: ${message.author.tag}`)
+        message.channel.send(embed);
+    } else {
+
+        message.channel.send("Gelieve dit commando te doen bij een ticket!");
+
+    }
 }
 
 module.exports.help = {
     name: "claim"
 }
+

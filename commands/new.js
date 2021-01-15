@@ -2,6 +2,8 @@ const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
+    message.delete();
+
     const categoryID = "728563729599430656"
 
     var userName = message.author.username;
@@ -38,7 +40,7 @@ module.exports.run = async (client, message, args) => {
                         .setTitle("Gemaakt")
                         .setDescription(`Je ticket is succesvol aangemaakt -> <#${settedParent.id}>`)
                         .setColor("#2075d6");
-                    message.channel.send(embed).then(message.react("👍"))
+                    message.channel.send(embed)//.then(message.react("👍"))
 
                     settedParent.updateOverwrite(message.guild.roles.cache.find(x => x.name === '@everyone'), {
                         SEND_MESSAGES: false,

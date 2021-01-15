@@ -1,6 +1,8 @@
 const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
+
+    message.delete();
     
     if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply(":x: U kunt dit niet doen!");
 

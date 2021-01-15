@@ -2,6 +2,9 @@ const discord = require("discord.js");
 const botConfig = require("../botconfig.json");
 
 module.exports.run = async (client, message, args, lock) => {
+
+    message.delete();
+    
     if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: U kunt dit niet doen.");
 
     message.delete()

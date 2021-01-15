@@ -93,7 +93,7 @@ client.on("message", async message => {
             message.channel.messages.fetch({limit: 1}).then(messages =>{
                 message.channel.bulkDelete(messages)
             })
-            message.channel.send(message.author.toString() + " geen puntjes!")
+            message.channel.send(message.author.toString() + " geen linkjes!")
         }
     }
     
@@ -144,5 +144,5 @@ client.on("guildMemberRemove", member => {
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
         .setDescription(`Jammer dat ${member.user.username}, weg is!`)
         .setColor("#fc0d00")
-    channel.send(leaveEmbed);
+    channel.send(leaveEmbed);   
 })

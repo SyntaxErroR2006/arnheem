@@ -3,6 +3,8 @@ const moment = require("moment");
 
 module.exports.run = async (client, message, args) => {
 
+    message.delete();
+
     var embed = new discord.MessageEmbed()
         .setTitle("Bot Info")
         .setDescription("De prefix is: `-`")

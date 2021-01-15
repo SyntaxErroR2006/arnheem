@@ -2,9 +2,9 @@ const discord = require("discord.js");
 
 module.exports.run = async(client, message, args) => {
 
-    var cmds = (message.guild.channels.cache.get("724578026242703390"));
+    message.delete();
 
-    if(!cmds) return message.reply("U zit niet in het juiste kanaal.")
+    
 
     // if(message.author.id != ["263034920635465729"]) return message.channel.send("U bent niet bevoegd deze command uit te voeren!")
 
