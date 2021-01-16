@@ -88,24 +88,10 @@ client.on("message", async message => {
 
     if (commands) commands.run(client, message, args);
 
-    if(args[0] == 'e'){
-        try{
-            client.user.setPresence({
-                activity: {
-                    name: 'PRESENCE',
-                    //type: "LISTENING",
-                    type: 'TYPE'
-                    //type: "WATCHING",
-                    //type: "STREAMING"
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }  
-    }
+    
 
 
-    if (content.includes(".com")) {
+    if (message.content.includes(".com")) {
         message.channel.messages.fetch().then(messages => {
             message.channel.bulkDelete(messages)
         })
@@ -113,22 +99,20 @@ client.on("message", async message => {
     }
 
 
-    if (content.includes("www.")) {
+    if (message.content.includes("www.")) {
         message.channel.messages.fetch().then(messages => {
             message.channel.bulkDelete(messages)
         })
         message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
     }
 
-    if (content.includes("discord.gg/")) {
+    if (message.content.includes("discord.gg/")) {
         message.channel.messages.fetch().then(messages => {
             message.channel.bulkDelete(messages)
         })
         message.channel.send(message.author.toString() + "geen linkjes sturen aub! Je bericht is verwijderd.")
     }
 
-
-    var role = message.member.roles.cache.has('724553018552615002');
 
 
 });
