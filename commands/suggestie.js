@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args) => {
 
     let suggestie = args.join(" ").slice(10);
 
-    var suggestieKanaal = message.member.guild.channels.cache.get("776203307592318976");
+    var suggestieKanaal = message.member.guild.channels.cache.get("795265282507538432");
 
     if (!suggestieKanaal) return message.channel.send("Kan het suggestie kanaal niet vinden.")
 
@@ -29,7 +29,7 @@ module.exports.run = async (client, message, args) => {
         .setColor("#2075d6")
 
     message.channel.send("Verzonden!");
-    var suggestieKanaal = message.guild.channels.cache.find(ch => ch.name === "suggesties");
+    var suggestieKanaal = message.guild.channels.cache.find(ch => ch.name === "suggestie");
     if (!suggestieKanaal) return message.guild.send("Kan het kanaal niet vinden");
 
     suggestieKanaal.send(embed).then(embedMessage => {
